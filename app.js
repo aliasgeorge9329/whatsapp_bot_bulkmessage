@@ -60,6 +60,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", async () => {
   console.log("Client is ready!");
+  Bulkmessage();
 });
 
 async function Bulkmessage() {
@@ -102,15 +103,15 @@ async function Bulkmessage() {
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-client.on("message_create", async (msg) => {
-  if (msg.to === "918111801958@c.us") {
-    if (msg.body === "!stop") {
-      exit(0);
-    }
-    if (msg.body === "!start" && parsed) {
-      Bulkmessage();
-    }
-  }
-});
+// client.on("message_create", async (msg) => {
+//   if (msg.to === "918111801958@c.us") {
+//     if (msg.body === "!stop") {
+//       exit(0);
+//     }
+//     if (msg.body === "!start" && parsed) {
+//       Bulkmessage();
+//     }
+//   }
+// });
 
 client.initialize();
