@@ -103,15 +103,15 @@ async function Bulkmessage() {
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-// client.on("message_create", async (msg) => {
-//   if (msg.to === "918111801958@c.us") {
-//     if (msg.body === "!stop") {
-//       exit(0);
-//     }
-//     if (msg.body === "!start" && parsed) {
-//       Bulkmessage();
-//     }
-//   }
-// });
+client.on("message_create", async (msg) => {
+  if (msg.to === "91<number_here>@c.us") {
+    if (msg.body === "!stop") {
+      exit(0);
+    }
+    if (msg.body === "!start" && parsed) {
+      Bulkmessage();
+    }
+  }
+});
 
 client.initialize();
