@@ -74,10 +74,10 @@ async function Bulkmessage() {
         .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
         .join(" ");
       msg1 = msg1.replace("[name]", name);
-      if (results[i].Phone_Number.trim().length === 10) {
-        num = `91${results[i].Phone_Number.trim()}@c.us`;
+      if (results[i].Phone_Number.replace(/\s/g,"").replace("+","").length === 10) {
+        num = `91${results[i].Phone_Number.replace(/\s/g,"").replace("+","")}@c.us`;  // Add country code if it doesnt exist
       } else {
-        num = `${results[i].Phone_Number.trim()}@c.us`;
+        num = `${results[i].Phone_Number.replace(/\s/g,"").replace("+","")}@c.us`;    
       }
       console.log(num);
       await client.sendMessage(num, msg1);
