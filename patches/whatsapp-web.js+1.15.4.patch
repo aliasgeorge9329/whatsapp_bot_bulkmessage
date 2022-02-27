@@ -1,0 +1,13 @@
+diff --git a/node_modules/whatsapp-web.js/src/util/Injected.js b/node_modules/whatsapp-web.js/src/util/Injected.js
+index 6989a86..ed5de9f 100644
+--- a/node_modules/whatsapp-web.js/src/util/Injected.js
++++ b/node_modules/whatsapp-web.js/src/util/Injected.js
+@@ -6,7 +6,7 @@ exports.ExposeStore = (moduleRaidStr) => {
+     // eslint-disable-next-line no-undef
+     window.mR = moduleRaid();
+     window.Store = Object.assign({}, window.mR.findModule(m => m.default && m.default.Chat)[0].default);
+-    window.Store.AppState = window.mR.findModule('STREAM')[0].Socket;
++    window.Store.AppState = window.mR.findModule('Socket')[0].Socket;
+     window.Store.Conn = window.mR.findModule('Conn')[0].Conn;
+     window.Store.CryptoLib = window.mR.findModule('decryptE2EMedia')[0];
+     window.Store.Wap = window.mR.findModule('queryLinkPreview')[0].default;
