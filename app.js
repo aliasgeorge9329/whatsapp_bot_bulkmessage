@@ -60,7 +60,6 @@ client.on("qr", (qr) => {
 
 client.on("ready", async () => {
   console.log("Client is ready!");
-  Bulkmessage();
 });
 
 async function Bulkmessage() {
@@ -74,16 +73,25 @@ async function Bulkmessage() {
         .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
         .join(" ");
       msg1 = msg1.replace("[name]", name);
-      if (results[i].Phone_Number.replace(/\s/g,"").replace("+","").length === 10) {
-        num = `91${results[i].Phone_Number.replace(/\s/g,"").replace("+","")}@c.us`;  // Add country code if it doesnt exist
+      if (
+        results[i].Phone_Number.replace(/\s/g, "").replace("+", "").length ===
+        10
+      ) {
+        num = `91${results[i].Phone_Number.replace(/\s/g, "").replace(
+          "+",
+          ""
+        )}@c.us`; // Add country code if it doesnt exist
       } else {
-        num = `${results[i].Phone_Number.replace(/\s/g,"").replace("+","")}@c.us`;    
+        num = `${results[i].Phone_Number.replace(/\s/g, "").replace(
+          "+",
+          ""
+        )}@c.us`;
       }
       console.log(num);
       await client.sendMessage(num, msg1);
       await client.sendMessage(num, msg2);
       await client.sendMessage(num, media);
-      await timer(200);
+      await timer(4000);
     } catch (err) {
       failed.push(results[i]);
       console.log(`Message Not sent to ${results[i].Phone_Number}`);
@@ -115,3 +123,4 @@ client.on("message_create", async (msg) => {
 });
 
 client.initialize();
+
